@@ -18,7 +18,7 @@ $field_list = [
     ['In case of emergency', 'emergency_person', 'text'],
     ['Emergency contact number', 'emergency_number', 'text'],
     ['Attach a photo of you', 'attach_id', 'file'],
-]
+];
 
 ?>
 
@@ -59,29 +59,14 @@ $field_list = [
 
         <div class="container">
             <h3>Start creating an ID with the fields below.</h3>
-            <?php if (auth()->user()->inGroup('superadmin', 'admin')): ?>
-            <div class="container">
-                 <a href="<?= base_url('requests') ?>" class="btn btn-outline-dark">Go Back</a>
-            </div>
-            <?php endif; ?>
             <br>
         </div>
         <form action="<?= base_url('user/store') ?>" method="POST" class="form" enctype="multipart/form-data">
             <div class="form-group container">
-                <?= createInputGroup($field_list[0][0], $field_list[0][1], $field_list[0][2]) ?>
-                <br />
-                <?= createInputGroup($field_list[1][0], $field_list[1][1], $field_list[1][2]) ?>
-                <br />
-                <?= createInputGroup($field_list[2][0], $field_list[2][1], $field_list[2][2]) ?>
-                <br />
-                <?= createInputGroup($field_list[3][0], $field_list[3][1], $field_list[3][2]) ?>
-                <br />
-                <?= createInputGroup($field_list[4][0], $field_list[4][1], $field_list[4][2]) ?>
-                <br />
-                <?= createInputGroup($field_list[5][0], $field_list[5][1], $field_list[5][2]) ?>
-                <br />
-                <?= createInputGroup($field_list[6][0], $field_list[6][1], $field_list[6][2]) ?>
-                <br />  
+                <?php foreach ($field_list as $field): ?>
+                    <?= createInputGroup($field[0], $field[1], $field[2]) ?>
+                    <br />
+                <?php endforeach; ?>
                 <input type="submit" class="btn btn-outline-primary" placeholder="Request ID" aria-placeholder="Request ID">
             </div>
         </form>
