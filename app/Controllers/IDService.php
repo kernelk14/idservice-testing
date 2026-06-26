@@ -27,6 +27,16 @@ class IDService extends BaseController
 
     public function create()
     {
+        $db = db_connect();
+        $existing = $db->table('id_users')
+            ->where('auth_user_id', auth()->id())
+            ->first();
+
+        if ($existing) {
+            return redirect()->to('/user/success')
+                ->with('message', 'You have already submitted an ID request.');
+        }
+
         return view('create');
     }
 
@@ -64,6 +74,7 @@ class IDService extends BaseController
             'emergency_person' => $this->request->getPost('emergency_person'),
             'emergency_number' => $this->request->getPost('emergency_number'),
             'attach_id' => $fileName,
+            'auth_user_id' => auth()->id(),
         ];
 
         $idModel->insert($data);
