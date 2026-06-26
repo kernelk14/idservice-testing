@@ -43,7 +43,7 @@ class AdminLogin extends BaseController
         }
 
         $result = auth('session')->attempt([
-            'email'    => $identity['secret'],
+            'username' => $username,
             'password' => $password,
         ]);
 
