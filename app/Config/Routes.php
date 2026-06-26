@@ -11,11 +11,14 @@ $routes->get('requests', 'IDService::index', ['filter' => 'session']);
 $routes->get('requests/create', 'IDService::create', ['filter' => 'session']);
 $routes->get('user/create', 'IDService::create', ['filter' => 'session']);
 
-$routes->get('admin/login', 'AdminLogin::loginView', ['as' => 'login']);
+$routes->get('admin/login', 'AdminLogin::loginView');
 $routes->post('admin/login', 'AdminLogin::loginAction');
-$routes->get('user/login', 'GoogleAuth::login');
+$routes->get('admin/logout', 'AdminLogin::logoutAction');
+$routes->get('user/login', 'GoogleAuth::login', ['as' => 'login']);
 $routes->get('google-auth', 'GoogleAuth::auth');
 $routes->get('google-callback', 'GoogleAuth::callback');
+
+$routes->get('user/success', 'IDService::success', ['filter' => 'session']);
 
 service('auth')->routes($routes);
 $routes->post('user/store', 'IDService::store', ['filter' => 'session']);

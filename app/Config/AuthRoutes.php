@@ -39,14 +39,6 @@ class AuthRoutes extends ShieldAuthRoutes
                 'verify-magic-link',
             ],
         ],
-        'logout' => [
-            [
-                'get',
-                'admin/logout',
-                '\App\Controllers\AdminLogin::logoutAction',
-                'logout',
-            ],
-        ],
         'auth-actions' => [
             [
                 'get',

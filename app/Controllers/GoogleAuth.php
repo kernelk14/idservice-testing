@@ -95,7 +95,7 @@ class GoogleAuth extends BaseController
             $user = $db->table('users')->where('id', $identity['user_id'])->get()->getRowArray();
             if ($user) {
                 auth()->loginById($user['id']);
-                return redirect()->to('/')->withCookies();
+                return redirect()->to('/user/create')->withCookies();
             }
         }
 
@@ -118,7 +118,7 @@ class GoogleAuth extends BaseController
         ]);
 
         auth()->loginById($newUserId);
-        return redirect()->to('/')->withCookies();
+        return redirect()->to('/user/create')->withCookies();
     }
 
     private function generateUsername(string $email): string

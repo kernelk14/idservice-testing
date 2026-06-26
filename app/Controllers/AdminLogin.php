@@ -63,6 +63,6 @@ class AdminLogin extends BaseController
     {
         auth()->logout();
 
-        return redirect()->to('/admin/login')->with('message', 'Logged out successfully.');
+        return redirect()->to('/user/login')->with('message', 'Logged out successfully.');
     }
 }

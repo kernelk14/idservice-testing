@@ -17,7 +17,7 @@
                         <span class="text-light align-items-center align-content-center d-flex me-2">
                             Hello!,&nbsp;
                                 <b><?= strtoupper(auth()->user()->username) ?></b>&nbsp; <!-- Displays your username -->
-                                (<b><?= strtoupper(auth()->user()->getGroups()[0]) ?></b>) <!-- Displays your user status -->
+                                <b><?= strtoupper(auth()->user()->getGroups()[0] ?? 'USER') ?></b>
                         </span>
                     </li>
                     <li class="navbar-text me-2 text-light"><span>|</span></li>

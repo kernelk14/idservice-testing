@@ -30,6 +30,11 @@ class IDService extends BaseController
         return view('create');
     }
 
+    public function success() 
+    {
+        return view('user_success');
+    }
+
     public function store() {
         $idModel = new IDModel();
 
@@ -62,7 +67,7 @@ class IDService extends BaseController
         ];
 
         $idModel->insert($data);
-        return redirect()->to('/')->with('message', 'ID request submitted successfully.');
+        return redirect()->to('/user/success')->with('message', 'ID request submitted successfully.');
     }
 
     public function addToProcessing()
