@@ -63,7 +63,7 @@ class AdminLogin extends BaseController
     {
         $user = auth()->user();
 
-        if ($user !== null && $user->in_groups('superadmin', 'admin')) {
+        if ($user !== null && $user->inGroup('superadmin', 'admin')) {
             $redirect = '/admin/login';
         } else {
             $redirect = '/user/login';

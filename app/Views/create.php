@@ -45,7 +45,7 @@ $field_list = [
 
         <div class="container">
             <h3>Start creating an ID with the fields below.</h3>
-            <?php if (auth()->user()->in_groups('superadmin', 'admin')): ?>
+            <?php if (auth()->user()->inGroup('superadmin', 'admin')): ?>
             <div class="container">
                  <a href="<?= base_url('requests') ?>" class="btn btn-outline-dark">Go Back</a>
             </div>
