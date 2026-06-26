@@ -31,6 +31,18 @@ $field_list = [
     <body>
         <script src="<?= base_url('assets/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 
+        <div class="navbar navbar-expand-lg" style="background-color: #800000;">
+            <div class="container-fluid">
+                <a href="#" class="navbar-brand ms-2">
+                    <img src="<?= base_url('logo-web.png') ?>" width="32" height="32">
+                </a>
+                <span class="text-light ms-auto">
+                    Hello, <b><?= strtoupper(auth()->user()->username) ?></b>&nbsp;
+                    <a href="<?= base_url('user/logout') ?>" class="btn btn-secondary btn-sm">Log out</a>
+                </span>
+            </div>
+        </div>
+
         <div class="container">
             <h3>Start creating an ID with the fields below.</h3>
             <?php if (auth()->user()->in_groups('superadmin', 'admin')): ?>
