@@ -20,7 +20,7 @@ class GoogleAuth extends BaseController
         $redirectUri  = base_url('google-callback');
 
         if (empty($clientId) || empty($clientSecret)) {
-            return redirect()->to('/google-login')->with('error', 'Google OAuth is not configured.');
+            return redirect()->to('/user/login')->with('error', 'Google OAuth is not configured.');
         }
 
         $provider = new \League\OAuth2\Client\Provider\Google([
@@ -45,7 +45,7 @@ class GoogleAuth extends BaseController
         $redirectUri  = base_url('google-callback');
 
         if (empty($clientId) || empty($clientSecret)) {
-            return redirect()->to('/google-login')->with('error', 'Google OAuth is not configured.');
+            return redirect()->to('/user/login')->with('error', 'Google OAuth is not configured.');
         }
 
         $state = $this->request->getGet('state');
@@ -53,14 +53,14 @@ class GoogleAuth extends BaseController
 
         if (empty($state) || $state !== $storedState) {
             session()->remove('oauth2state');
-            return redirect()->to('/google-login')->with('error', 'Invalid state parameter.');
+            return redirect()->to('/user/login')->with('error', 'Invalid state parameter.');
         }
 
         session()->remove('oauth2state');
 
         $code = $this->request->getGet('code');
         if (empty($code)) {
-            return redirect()->to('/google-login')->with('error', 'Authorization code not provided.');
+            return redirect()->to('/user/login')->with('error', 'Authorization code not provided.');
         }
 
         $provider = new \League\OAuth2\Client\Provider\Google([
@@ -76,11 +76,11 @@ class GoogleAuth extends BaseController
             $googleEmail = $ownerDetails->getEmail();
             $googleName  = $ownerDetails->getName();
         } catch (\Exception $e) {
-            return redirect()->to('/google-login')->with('error', 'Failed to authenticate with Google: ' . $e->getMessage());
+            return redirect()->to('/user/login')->with('error', 'Failed to authenticate with Google: ' . $e->getMessage());
         }
 
         if (empty($googleEmail)) {
-            return redirect()->to('/google-login')->with('error', 'Could not retrieve email from Google.');
+            return redirect()->to('/user/login')->with('error', 'Could not retrieve email from Google.');
         }
 
         $db = db_connect();

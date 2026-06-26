@@ -47,7 +47,7 @@
                         </div>
 
                         <p class="text-center mt-3">
-                            <a href="<?= base_url('google-login') ?>">Login as User</a>
+                            <a href="<?= base_url('user/login') ?>">Login as User</a>
                         </p>
                     </form>
                 </div>
