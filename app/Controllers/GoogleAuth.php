@@ -117,6 +117,12 @@ class GoogleAuth extends BaseController
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
+        $db->table('auth_groups_users')->insert([
+            'user_id'    => $newUserId,
+            'group'      => 'user',
+            'created_at' => date('Y-m-d H:i:s'),
+        ]);
+
         auth()->loginById($newUserId);
         return redirect()->to('/user/create')->withCookies();
     }
