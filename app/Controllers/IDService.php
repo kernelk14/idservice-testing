@@ -30,7 +30,8 @@ class IDService extends BaseController
         $db = db_connect();
         $existing = $db->table('id_users')
             ->where('auth_user_id', auth()->id())
-            ->first();
+            ->get()
+            ->getRowArray();
 
         if ($existing) {
             return redirect()->to('/user/success')
