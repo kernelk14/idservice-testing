@@ -54,10 +54,6 @@
                         </svg>
                         Sign in with Google
                     </a>
-
-                    <p class="mt-4">
-                        <a href="<?= base_url('admin/login') ?>">Admin Login</a>
-                    </p>
                 </div>
             </div>
         </div>
