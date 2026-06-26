@@ -11,7 +11,7 @@ $routes->get('requests', 'IDService::index', ['filter' => 'session']);
 $routes->get('requests/create', 'IDService::create', ['filter' => 'session']);
 $routes->get('user/create', 'IDService::create', ['filter' => 'session']);
 
-$routes->get('admin/login', 'AdminLogin::loginView');
+$routes->get('admin/login', 'AdminLogin::loginView', ['as' => 'login']);
 $routes->post('admin/login', 'AdminLogin::loginAction');
 $routes->get('google-login', 'GoogleAuth::login');
 $routes->get('google-auth', 'GoogleAuth::auth');
