@@ -61,8 +61,16 @@ class AdminLogin extends BaseController
 
     public function logoutAction(): RedirectResponse
     {
+        $user = auth()->user();
+
+        if ($user !== null && $user->in_groups('superadmin', 'admin')) {
+            $redirect = '/admin/login';
+        } else {
+            $redirect = '/user/login';
+        }
+
         auth()->logout();
 
-        return redirect()->to('/user/login')->with('message', 'Logged out successfully.');
+        return redirect()->to($redirect)->with('message', 'Logged out successfully.');
     }
 }
