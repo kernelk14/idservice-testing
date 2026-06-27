@@ -166,10 +166,7 @@
                                     <td><?= $u['emergency_number'] ?></td>
                                      <td><img src="<?= base_url('uploads/' . $u['attach_id']) ?>" width="64" height="64" /></td>
                                      <td>
-                                         <form method="POST" action="<?= base_url('requests/process/remove') ?>" style="display:inline;">
-                                             <input type="hidden" name="userId" value="<?= $u['userId'] ?>">
-                                             <button type="submit" class="btn btn-danger btn-sm">Remove</button>
-                                         </form>
+                                         <a href="<?= base_url('requests/process/remove/' . $u['userId']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Remove this user from queue?')">Remove</a>
                                      </td>
                                  </tr>
                             <?php endforeach; ?>

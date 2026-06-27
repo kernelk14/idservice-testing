@@ -25,5 +25,5 @@ service('auth')->routes($routes);
 $routes->post('user/store', 'IDService::store', ['filter' => 'session']);
 $routes->post('requests/process', 'IDService::addToProcessing', ['filter' => 'session']);
 $routes->get('requests/process', 'IDService::showProcess', ['filter' => 'session']);
-$routes->post('requests/process/remove', 'IDService::removeFromProcessing', ['filter' => 'session']);
+$routes->get('requests/process/remove/(:num)', 'IDService::removeFromProcessing/$1', ['filter' => 'session']);
 $routes->post('user/generate-pdf', 'IDService::generatePdf', ['filter' => 'session']);
