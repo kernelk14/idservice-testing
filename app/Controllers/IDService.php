@@ -125,6 +125,20 @@ class IDService extends BaseController
         return view('process', ['users' => $users]);
     }
 
+    public function removeFromProcessing()
+    {
+        $userId = $this->request->getPost('userId');
+
+        if (empty($userId)) {
+            return redirect()->to('/requests/process')->with('error', 'No user specified.');
+        }
+
+        $processingModel = new ProcessingModel();
+        $processingModel->where('userId', $userId)->delete();
+
+        return redirect()->to('/requests/process')->with('message', 'User removed from queue.');
+    }
+
     public function generatePdf()
     {
         $db = db_connect();

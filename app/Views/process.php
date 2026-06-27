@@ -133,8 +133,9 @@
                                 <th>Contact Number</th>
                                 <th>Emergency Contact</th>
                                 <th>Emergency Contact Number</th>
-                                <th>Image</th>
-                            </tr>
+                                 <th>Image</th>
+                                 <th>Action</th>
+                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach($users as $u): ?>
@@ -163,8 +164,14 @@
                                     <td><?= $u['contact_num'] ?></td>
                                     <td><?= $u['emergency_person'] ?></td>
                                     <td><?= $u['emergency_number'] ?></td>
-                                    <td><img src="<?= base_url('uploads/' . $u['attach_id']) ?>" width="64" height="64" /></td>
-                                </tr>
+                                     <td><img src="<?= base_url('uploads/' . $u['attach_id']) ?>" width="64" height="64" /></td>
+                                     <td>
+                                         <form method="POST" action="<?= base_url('requests/process/remove') ?>" style="display:inline;">
+                                             <input type="hidden" name="userId" value="<?= $u['userId'] ?>">
+                                             <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                                         </form>
+                                     </td>
+                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
