@@ -1,17 +1,11 @@
 <?php 
 
-function createInputGroup($label, $name, $type): string {
-    $html = <<< EOD
-    <div class='input-group'>
-        <span class='input-group-text'>$label</span>
-        <input type='$type' aria-label='$label' name='$name' class='form-control' required>
-    </div>
-    EOD;
-    return $html;
-}
-
 $field_list = [
-    ['Name', 'name', 'text'],
+    [
+        ['Last Name', 'last_name', 'text'],
+        ['First Name', 'first_name', 'text'],
+        ['Middle Initial', 'middle_name', 'text'],
+    ],
     ['Email Address', 'email', 'email'],
     ['Contact Number', 'contact_num', 'text'],
     ['Address', 'address', 'text'],
@@ -64,8 +58,23 @@ $field_list = [
         <form action="<?= base_url('user/store') ?>" method="POST" class="form" enctype="multipart/form-data">
             <div class="form-group container">
                 <?php foreach ($field_list as $field): ?>
-                    <?= createInputGroup($field[0], $field[1], $field[2]) ?>
-                    <br />
+                    <?php if (is_array($field[0])): ?>
+                    <div class="row mb-3">
+                        <?php foreach ($field as $sub): ?>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-text"><?= $sub[0] ?></span>
+                                <input type="<?= $sub[2] ?>" name="<?= $sub[1] ?>" class="form-control" required>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php else: ?>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><?= $field[0] ?></span>
+                        <input type="<?= $field[2] ?>" name="<?= $field[1] ?>" class="form-control" required>
+                    </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
                 <input type="submit" class="btn btn-outline-primary" placeholder="Request ID" aria-placeholder="Request ID">
             </div>

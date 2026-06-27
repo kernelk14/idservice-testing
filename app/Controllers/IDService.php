@@ -67,8 +67,13 @@ class IDService extends BaseController
         $fileName = $file->getRandomName();
         $file->move(FCPATH . 'uploads', $fileName);
 
+        $middle = $this->request->getPost('middle_name');
+        $middleInitial = !empty($middle) ? strtoupper(substr(trim($middle), 0, 1)) . '.' : '';
+
         $data = [
-            'name' => $this->request->getPost('name'),
+            'name' => $this->request->getPost('last_name') . ', '
+                    . $this->request->getPost('first_name') . ' '
+                    . $middleInitial,
             'email' => $this->request->getPost('email'),
             'contact_num' => $this->request->getPost('contact_num'),
             'address' => $this->request->getPost('address'),
