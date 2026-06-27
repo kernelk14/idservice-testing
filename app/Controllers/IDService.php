@@ -84,6 +84,11 @@ class IDService extends BaseController
         ];
 
         $idModel->insert($data);
+
+        if (auth()->user()->inGroup('superadmin', 'admin')) {
+            return redirect()->to('/')->with('message', 'ID request submitted successfully.');
+        }
+
         return redirect()->to('/user/success')->with('message', 'ID request submitted successfully.');
     }
 
