@@ -98,7 +98,7 @@
                         </tbody>
                     </table>
                 <?php else: ?>
-                    <p>No users found. <a href="<?= base_url('user/create') ?>">Create one</a></p>
+                    <p>No ID requests found. <a href="<?= base_url('user/create') ?>">Create one</a></p>
                 <?php endif; ?>
             </div>
         </div>

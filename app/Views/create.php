@@ -9,7 +9,7 @@ $field_list = [
     ['Email Address', 'email', 'email'],
     ['Contact Number', 'contact_num', 'text'],
     ['Address', 'address', 'text'],
-    ['In case of emergency', 'emergency_person', 'text'],
+    ['Emergency contact person', 'emergency_person', 'text'],
     ['Emergency contact number', 'emergency_number', 'text'],
     ['Attach a photo of you', 'attach_id', 'file'],
 ];
@@ -64,7 +64,7 @@ $field_list = [
                         <div class="col-md-4">
                             <div class="input-group">
                                 <span class="input-group-text"><?= $sub[0] ?></span>
-                                <input type="<?= $sub[2] ?>" name="<?= $sub[1] ?>" class="form-control" required>
+                                <input type="<?= $sub[2] ?>" name="<?= $sub[1] ?>" class="form-control" required autocomplete="off">
                             </div>
                         </div>
                         <?php endforeach; ?>
@@ -72,7 +72,7 @@ $field_list = [
                     <?php else: ?>
                     <div class="input-group mb-3">
                         <span class="input-group-text"><?= $field[0] ?></span>
-                        <input type="<?= $field[2] ?>" name="<?= $field[1] ?>" class="form-control" required>
+                        <input type="<?= $field[2] ?>" name="<?= $field[1] ?>" class="form-control" required autocomplete="off">
                     </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
