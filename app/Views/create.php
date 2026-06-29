@@ -4,7 +4,7 @@ $field_list = [
     [
         ['Last Name', 'last_name', 'text'],
         ['First Name', 'first_name', 'text'],
-        ['Middle Initial', 'middle_name', 'text'],
+        ['Middle Name', 'middle_name', 'text'],
     ],
     ['Email Address', 'email', 'email'],
     ['Contact Number', 'contact_num', 'text'],
